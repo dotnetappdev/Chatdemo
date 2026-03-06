@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option csharp_namespace = "ChatDemo.Protos";
+
+package chat;
+
+// Chat service exposed by each peer (WPF client hosts this)
+service ChatService {
+  // Unary: send a single message to a peer
+  rpc SendMessage (ChatMessageRequest) returns (ChatMessageReply);
+
+  // Server streaming: receiver subscribes and gets pushed messages
+  rpc SubscribeToMessages (SubscribeRequest) returns (stream ChatMessageRequest);
+
+  // Bidirectional streaming: real-time chat session between two peers
+  rpc Chat (stream ChatMessageRequest) returns (stream ChatMessageRequest);
+
+  // Health/ping check
+  rpc Ping (PingRequest) returns (PingReply);
+}
+
+message ChatMessageRequest {
+  string message_id  = 1;
+  string sender_id   = 2;
+  string sender_name = 3;
+  string receiver_id = 4;
+  string content     = 5;
+  string timestamp   = 6;
+  MessageType type   = 7;
+}
+
+message ChatMessageReply {
+  bool   success   = 1;
+  string message   = 2;
+}
+
+message SubscribeRequest {
+  string user_id   = 1;
+  string user_name = 2;
+}
+
+message PingRequest {
+  string sender_id   = 1;
+  string sender_name = 2;
+}
+
+message PingReply {
+  string responder_id   = 1;
+  string responder_name = 2;
+  bool   online         = 3;
+}
+
+enum MessageType {
+  TEXT  = 0;
+  IMAGE = 1;
+  FILE  = 2;
+  SYSTEM = 3;
+}

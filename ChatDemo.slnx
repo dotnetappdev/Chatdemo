@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ChatDemo.Api/ChatDemo.Api.csproj" />
+    <Project Path="src/ChatDemo.Protos/ChatDemo.Protos.csproj" />
+    <Project Path="src/ChatDemo.Wpf/ChatDemo.Wpf.csproj" />
+  </Folder>
+</Solution>

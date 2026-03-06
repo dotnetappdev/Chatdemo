@@ -1,0 +1,35 @@
+## Build and Release
+[Oo]bj/
+[Bb]in/
+*.user
+*.suo
+.vs/
+*.swp
+*~
+
+## NuGet
+*.nupkg
+*.snupkg
+**/packages/
+!**/packages/build/
+*.lock.json
+!packages.lock.json
+nuget.config
+
+## Logs
+*.log
+*.trx
+
+## SQLite dev database
+*.db
+*.db-shm
+*.db-wal
+
+## Rider
+.idea/
+
+## VS Code
+.vscode/
+
+## Publish output
+publish/
